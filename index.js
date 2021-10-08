@@ -47,16 +47,19 @@ let nums3 = [200, 5, 4, 10, 8, 5, -3.3, 4.4, 0];
 //console.log(nums1.slice(0, -1));
 
 // attempt at recursion:
+let finalArray = [];
 function sortArrayWithRecursion(numbers) {
+
+
   if (numbers.length === 1) {
-    return numbers;
+    finalArray.push(numbers[0]);
   } else {
     let lowestValue = findMinValue(numbers);
     numbers.splice(numbers.indexOf(lowestValue), 1);
-    numbers.unshift(lowestValue);
-    numbers.splice(1, 1, sortArrayWithRecursion(numbers.slice(1)));
-    return numbers;
+    finalArray.push(lowestValue);
+    sortArrayWithRecursion(numbers);
   }
+  return finalArray;
 }
 
-console.log(sortArrayWithRecursion(nums1));
+console.log(sortArrayWithRecursion(nums2));
