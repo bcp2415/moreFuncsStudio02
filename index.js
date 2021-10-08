@@ -52,17 +52,17 @@ function sortArrayWithRecursion(numbers) {
 
   if (numbers.length === 1) {
     newArray.push(numbers[0]);
-    return newArray;
+    return newArray[0];
   } else {
     let lowestValue = findMinValue(numbers);
-    console.log(`The lowest value is now at index ${numbers.indexOf(lowestValue)}.`);
     numbers.splice(numbers.indexOf(lowestValue), 1);
     
-    // return (newArray.push(lowestValue, sortArrayWithRecursion(numbers)));
-    newArray.push(lowestValue);
-    newArray.push(sortArrayWithRecursion(numbers));
-    return newArray;
+    //newArray.push(lowestValue);
+    
+    newArray.push(lowestValue, sortArrayWithRecursion(numbers));
   }
+  
+  return newArray;
 }
 
 console.log(sortArrayWithRecursion(nums1));
