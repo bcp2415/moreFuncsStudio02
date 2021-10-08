@@ -48,21 +48,15 @@ let nums3 = [200, 5, 4, 10, 8, 5, -3.3, 4.4, 0];
 
 // attempt at recursion:
 function sortArrayWithRecursion(numbers) {
-  let newArray = [];
-
   if (numbers.length === 1) {
-    newArray.push(numbers[0]);
-    return newArray[0];
+    return numbers;
   } else {
     let lowestValue = findMinValue(numbers);
     numbers.splice(numbers.indexOf(lowestValue), 1);
-    
-    //newArray.push(lowestValue);
-    
-    newArray.push(lowestValue, sortArrayWithRecursion(numbers));
+    numbers.unshift(lowestValue);
+    numbers.splice(1, 1, sortArrayWithRecursion(numbers.slice(1)));
+    return numbers;
   }
-  
-  return newArray;
 }
 
 console.log(sortArrayWithRecursion(nums1));
