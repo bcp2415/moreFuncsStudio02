@@ -27,9 +27,7 @@ function sortArray(numbers) {
     
     let lowestValue = findMinValue(numbers);
     newArray.push(lowestValue);
-
-    let location = numbers.indexOf(lowestValue);
-    numbers.splice(location, 1);
+    numbers.splice(numbers.indexOf(lowestValue), 1);
   }
   return newArray;
 }
@@ -38,11 +36,13 @@ function sortArray(numbers) {
 
 
 //Sample arrays for testing:
+let numsSimplest = [5];
+let numsNextSimplest = [6, 5];
 let nums1 = [5, 10, 2, 42];
 let nums2 = [-2, 0, -10, -44, 5, 3, 0, 3];
 let nums3 = [200, 5, 4, 10, 8, 5, -3.3, 4.4, 0];
 
-console.log(sortArray(nums3));
+//console.log(sortArray(nums1));
 
 //console.log(nums1.slice(0, -1));
 
@@ -51,18 +51,18 @@ function sortArrayWithRecursion(numbers) {
   let newArray = [];
 
   if (numbers.length === 1) {
-    return number;
+    newArray.push(numbers[0]);
+    return newArray;
   } else {
-
-  }
-
-  
-    
     let lowestValue = findMinValue(numbers);
+    console.log(`The lowest value is now at index ${numbers.indexOf(lowestValue)}.`);
+    numbers.splice(numbers.indexOf(lowestValue), 1);
+    
+    // return (newArray.push(lowestValue, sortArrayWithRecursion(numbers)));
     newArray.push(lowestValue);
-
-    let something = numbers.indexOf(lowestValue);
-    numbers.splice(something, 1);
-  
-  return newArray;
+    newArray.push(sortArrayWithRecursion(numbers));
+    return newArray;
+  }
 }
+
+console.log(sortArrayWithRecursion(nums1));
