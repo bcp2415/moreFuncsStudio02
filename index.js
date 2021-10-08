@@ -19,6 +19,21 @@ e) Return the new sorted array.
 f) Be sure to print the results in order to verify your code.*/
 
 //Your function here...
+function sortArray(numbers) {
+  let newArray = [];
+
+  
+  while (numbers.length > 0) {
+    
+    let lowestValue = findMinValue(numbers);
+    newArray.push(lowestValue);
+
+    let location = numbers.indexOf(lowestValue);
+    numbers.splice(location, 1);
+  }
+  return newArray;
+}
+
 
 
 
@@ -26,3 +41,28 @@ f) Be sure to print the results in order to verify your code.*/
 let nums1 = [5, 10, 2, 42];
 let nums2 = [-2, 0, -10, -44, 5, 3, 0, 3];
 let nums3 = [200, 5, 4, 10, 8, 5, -3.3, 4.4, 0];
+
+console.log(sortArray(nums3));
+
+//console.log(nums1.slice(0, -1));
+
+// attempt at recursion:
+function sortArrayWithRecursion(numbers) {
+  let newArray = [];
+
+  if (numbers.length === 1) {
+    return number;
+  } else {
+
+  }
+
+  
+    
+    let lowestValue = findMinValue(numbers);
+    newArray.push(lowestValue);
+
+    let something = numbers.indexOf(lowestValue);
+    numbers.splice(something, 1);
+  
+  return newArray;
+}
